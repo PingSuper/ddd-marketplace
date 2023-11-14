@@ -95,7 +95,8 @@ public class ClassifiedAd : Entity
             throw new InvalidEntityStateException(this, $"Post-checks failed in state {State}");
     }
 
-    public enum ClassifiedAdState {
+    public enum ClassifiedAdState
+    {
         PendingReview,
         Active,
         Inactive,
