@@ -8,9 +8,6 @@ namespace Marketplace.Domain.Interfaces
         Task Add(ClassifiedAd entity);
 
         Task<bool> Exists(ClassifiedAdId id);
-
-        // temp
-        Task Save(ClassifiedAd entity);
     }
 }
 
