@@ -4,18 +4,18 @@ namespace Marketplace.Domain
 {
 	public class ClassifiedAdId: Value<ClassifiedAdId>
 	{
-		private readonly Guid _value;
+        public Guid Value { get; private set; }
 
-		public ClassifiedAdId(Guid value)
+        public ClassifiedAdId(Guid value)
 		{
 			if (value == default)
 				throw new ArgumentNullException(nameof(value), "Classified Ad id cannot be empty");
 
-			_value = value;
+			Value = value;
 		}
 
 		// Assign value of value object to primitive type directly
-		public static implicit operator Guid(ClassifiedAdId self) => self._value;
+		public static implicit operator Guid(ClassifiedAdId self) => self.Value;
 	}
 }
 
