@@ -17,6 +17,9 @@
     <Folder Include="Exceptions\" />
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.11" />
+  </ItemGroup>
+  <ItemGroup>
     <ProjectReference Include="..\Marketplace.Framework\Marketplace.Framework.csproj" />
   </ItemGroup>
 </Project>

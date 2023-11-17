@@ -3,6 +3,7 @@ using Marketplace.Api;
 using Marketplace.Domain.Interfaces;
 using Marketplace.Framework;
 using Marketplace.Infrastructure;
+using Microsoft.EntityFrameworkCore;
 using Raven.Client.Documents;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -26,22 +27,30 @@ builder.Services.AddSwaggerGen(
     }
     );
 
-// RavenDB
-var store = new DocumentStore
-{
-    Urls = new[] { "http://localhost:8080" },
-    Database = "Marketplace_Chapter8",
-    Conventions =
-                {
-                    FindIdentityProperty = x => x.Name == "DbId"
-                }
-};
-store.Initialize();
+//// RavenDB
+//var store = new DocumentStore
+//{
+//    Urls = new[] { "http://localhost:8080" },
+//    Database = "Marketplace_Chapter8",
+//    Conventions =
+//                {
+//                    FindIdentityProperty = x => x.Name == "DbId"
+//                }
+//};
+//store.Initialize();
+
+// EF
+const string connectionString =
+                "Host=localhost;Database=Marketplace_Chapter8;Username=ddd;Password=book";
+builder.Services
+    .AddEntityFrameworkNpgsql()
+    .AddDbContext<ClassifiedAdDbContext>(options => options.UseNpgsql(connectionString));
 
 // DI
 builder.Services.AddSingleton<ICurrencyLookup, FixedCurrencyLookup>();
-builder.Services.AddScoped(c => store.OpenAsyncSession());
-builder.Services.AddScoped<IUnitOfWork, RavenDbUnitOfWork>();
+//builder.Services.AddScoped(c => store.OpenAsyncSession());
+//builder.Services.AddScoped<IUnitOfWork, RavenDbUnitOfWork>();
+builder.Services.AddScoped<IUnitOfWork, EfCoreUnitOfWork>();
 builder.Services.AddScoped<IClassifiedAdRepository, ClassifiedAdRepository>();
 builder.Services.AddScoped<ClassifiedAdsApplicationService>();
 
