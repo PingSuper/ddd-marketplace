@@ -21,6 +21,9 @@ namespace Marketplace.Domain.ValueObjects
             ICurrencyLookup currencyLookup) =>
             new Price(amount, currency, currencyLookup);
 
+        // Satisfy the serialization requirements 
+        protected Price() { }
+
     }
 }
 

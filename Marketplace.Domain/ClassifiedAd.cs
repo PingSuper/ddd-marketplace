@@ -7,11 +7,11 @@ namespace Marketplace.Domain;
 public class ClassifiedAd : AggregateRoot<ClassifiedAdId>
 {
     // Properties to handle the persistence
-    //private string DbId
-    //{
-    //    get => $"ClassifiedAd/{Id.Value}";
-    //    set { }
-    //}
+    private string DbId
+    {
+        get => $"ClassifiedAd/{Id.Value}";
+        set { }
+    }
 
     //public ClassifiedAdId Id { get; private set; }
     public UserId OwnerId { get; private set; }

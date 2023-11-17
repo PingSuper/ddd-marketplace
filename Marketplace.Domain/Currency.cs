@@ -14,6 +14,9 @@ namespace Marketplace.Domain
 			InUse = false
 		};
 
-	}
+        // Satisfy the serialization requirements 
+        protected Currency() { }
+
+    }
 }
 

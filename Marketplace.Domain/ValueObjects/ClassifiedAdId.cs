@@ -16,7 +16,10 @@ namespace Marketplace.Domain
 
 		// Assign value of value object to primitive type directly
 		public static implicit operator Guid(ClassifiedAdId self) => self.Value;
-	}
+
+        // Serialization requirement
+        protected ClassifiedAdId() { }
+    }
 }
 
 

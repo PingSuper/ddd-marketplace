@@ -15,6 +15,9 @@ namespace Marketplace.Domain
 		public static ClassifiedAdText FromString(string value) => new ClassifiedAdText(value);
 
         public static implicit operator string(ClassifiedAdText text) => text.Value;
+
+        // Satisfy the serialization requirements
+        protected ClassifiedAdText() { }
     }
 }
 

@@ -64,7 +64,10 @@ namespace Marketplace.Domain.ValueObjects
 			minuend.Subtract(subtrahend);
 
 		public override string ToString() => $"{Currency.CurrencyCode} {Amount}";
-        
+
+        // Satisfy the serialization requirements 
+        protected Money() { }
+
     }
 
 
