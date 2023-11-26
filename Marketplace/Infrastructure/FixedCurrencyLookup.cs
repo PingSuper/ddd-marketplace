@@ -1,12 +1,12 @@
 ﻿using System;
 using Marketplace.Domain.Shared;
 
-namespace Marketplace.Test
+namespace Marketplace.Infrastructure
 {
-    public class FakeCurrencyLookup : ICurrencyLookup
-	{
-        private static readonly IEnumerable<Currency>
-            _currencyDetails = new[]
+    public class FixedCurrencyLookup : ICurrencyLookup
+    {
+        private static readonly IEnumerable<Currency> _currencies =
+            new[]
             {
                 new Currency{
                     CurrencyCode = "EUR",
@@ -30,13 +30,15 @@ namespace Marketplace.Test
                 },
             };
 
-        public Currency FindCurrency(string currencyCode)
+        public FixedCurrencyLookup()
         {
-            var currency = _currencyDetails.FirstOrDefault(x => x.CurrencyCode == currencyCode);
-            return currency ?? Currency.None;
         }
 
-
+        public Currency FindCurrency(string currencyCode)
+        {
+            var currency = _currencies.FirstOrDefault(x => x.CurrencyCode == currencyCode);
+            return currency ?? Currency.None;
+        }
     }
 }
 

@@ -1,6 +1,5 @@
-﻿using Marketplace.Domain.ValueObjects;
-using Marketplace.Domain.Interfaces;
-using Xunit;
+﻿using Xunit;
+using Marketplace.Domain.Shared;
 
 namespace Marketplace.Test;
 public class MoneyTest

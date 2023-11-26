@@ -15,10 +15,6 @@
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Api\" />
-    <Folder Include="Contracts\" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\Marketplace.Domain\Marketplace.Domain.csproj">
       <GlobalPropertiesToRemove></GlobalPropertiesToRemove>
     </ProjectReference>
